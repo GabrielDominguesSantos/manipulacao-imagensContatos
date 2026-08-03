@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaViewBase, StyleSheet } from 'react-native';
+import ImagePickerComponent from './src/components/ImagePickerComponent';
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    //SafeAreaView para garantir que o conteúdo não ultrapasse áreas seguras do dispositivo
+    <SafeAreaView style={styles.container}>
+      {/* Renderiza o componente de seleção de imagem */}
+      <ImagePickerComponent />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#f0f0f0',
   },
 });
+
+export default App;
