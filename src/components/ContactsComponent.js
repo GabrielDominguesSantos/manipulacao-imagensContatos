@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Button, Alert, StyleSheet } from 'react-native';
 import * as Contacts from 'expo-contacts';
+import ImagePickerComponent from './ImagePickerComponent';
 
 //Define o componente funcional
 const ContactsComponent = () => {
@@ -51,7 +52,7 @@ const ContactsComponent = () => {
             </Text>
 
             {/* Lista de números de telefone do contato */}
-            {item.phoneNumber && item.phoneNumbers.map((phone, index) => (
+            {item.phoneNumbers && item.phoneNumbers.map((phone, index) => (
                 <Text key={index} style={styles.contactDetail}>
                     📞 {phone.number}
                 </Text>
@@ -78,6 +79,7 @@ const ContactsComponent = () => {
                 keyExtractor={(item) => item.id} //Chave única para cada item
                 renderItem={renderItem} //Função para renderizar cada item
                 contentContainerStyle={styles.list} //Estilo do conteúdo da lista
+                ListHeaderComponent={() => <ImagePickerComponent />} // Cabeçalho com seletor de imagem
             />
         </View>
     );
