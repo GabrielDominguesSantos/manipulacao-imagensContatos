@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Image, StyleSheet, Alert } from 'react-native';
+import { View, Button, Image, StyleSheet, Alert, Linking } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 const ImagePickerComponent = () => {
@@ -12,7 +12,14 @@ const ImagePickerComponent = () => {
             const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
             if (status !== 'granted') {
-                Alert.alert('Permissão Negada', 'Permissão para acessar a galeria foi negada.');
+                Alert.alert(
+                    'Permissão Negada',
+                    'Permissão para acessar a galeria foi negada. Deseja abrir as configurações do app para permitir?',
+                    [
+                        { text: 'Cancelar', style: 'cancel' },
+                        { text: 'Abrir Ajustes', onPress: () => Linking.openSettings() },
+                    ]
+                );
                 return;
             }
 
