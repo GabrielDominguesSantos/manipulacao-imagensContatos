@@ -20,7 +20,7 @@ const ContactsComponent = () => {
                 'Deseja permitir manualmente nas configurações?',
                 [
                     { text: 'Cancelar', style: 'cancel' },
-                    { text: 'Abrir Ajustes', onPress: () => Linking.openSettings() },
+                    { text: 'Abrir Ajustes', onPress: () => Linking.openSettings() }, // Direciona para as config de permissões do app
                 ]
             );
             return;
