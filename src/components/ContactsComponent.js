@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Button, Alert, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Button, Alert, Linking, StyleSheet } from 'react-native';
 import * as Contacts from 'expo-contacts';
 import ImagePickerComponent from './ImagePickerComponent';
 
@@ -15,7 +15,14 @@ const ContactsComponent = () => {
 
         //Verifica se a permissão foi concedida
         if (status !== 'granted') {
-            Alert.alert('Permissão Negada', 'Permissão para acessar contatos foi negada.');
+            Alert.alert(
+                'Permissão para acessar os contatos negada',
+                'Deseja permitir manualmente nas configurações?',
+                [
+                    { text: 'Cancelar', style: 'cancel' },
+                    { text: 'Abrir Ajustes', onPress: () => Linking.openSettings() },
+                ]
+            );
             return;
         }
 

@@ -13,8 +13,8 @@ const ImagePickerComponent = () => {
 
             if (status !== 'granted') {
                 Alert.alert(
-                    'Permissão Negada',
-                    'Permissão para acessar a galeria foi negada. Deseja abrir as configurações do app para permitir?',
+                    'Permissão para acessar a galeria foi negada.',
+                    'Deseja permitir manualmente nas configurações?',
                     [
                         { text: 'Cancelar', style: 'cancel' },
                         { text: 'Abrir Ajustes', onPress: () => Linking.openSettings() },
